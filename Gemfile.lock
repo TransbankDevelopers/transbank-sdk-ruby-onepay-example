@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/TransbankDevelopers/transbank-sdk-ruby.git
+  revision: 0e8d184d267d24c32d2250af20298b15962d0f13
+  branch: fixes_from_example_project
+  specs:
+    transbank-sdk (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,6 +60,7 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -90,6 +98,12 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     pg (1.1.3)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
@@ -181,12 +195,15 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  pry
+  pry-byebug
   puma (~> 3.7)
   rails (~> 5.1.6)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  transbank-sdk!
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
