@@ -49,7 +49,7 @@
   <tr>
     <td>Anulación</td>
     <td>
-      <a href='/TODO'
+      <a href=<%="/transactions/refund/?amount=#{@transaction_commit_response.amount}&occ=#{@transaction_commit_response.occ}&external_unique_number=#{@external_unique_number}&authorization_code=#{@transaction_commit_response.authorization_code}" %>
       >Anular esta compra</a>
     </td>
   </tr>

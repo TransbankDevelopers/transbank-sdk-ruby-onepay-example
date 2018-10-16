@@ -38,21 +38,24 @@ class TransactionController < ApplicationController
       return render json: {message: 'Error while committing', occ: @occ, external_unique_number: @external_unique_number}, status: 403
     end
 
-    @transaction_commit_response = Transbank::Onepay::Transaction.commit(@occ, @external_unique_number)
+    @transaction_commit_response = Transbank::Onepay::Transaction.commit(occ: @occ, external_unique_number: @external_unique_number)
   end
 
   def refund
+    amount = params[:amount]
+    occ = params[:occ]
+    external_unique_number = params[:external_unique_number]
+    authorization_code = params[:authorization_code]
 
+    refund_params = { amount: amount,
+                      occ: occ,
+                      external_unique_number: external_unique_number,
+                      authorization_code: authorization_code }
+    @refund_response = Transbank::Onepay::Refund.create(refund_params)
+  rescue Transbank::Onepay::Errors::RefundCreateError => e
+    return render json: { message: e.message }
   end
 
-  # {"response_code":"OK",
-  #  "description":"OK",
-  #  "occ":"1810911173917367",
-  #  "ott":36361820,
-  #  "external_unique_number":"1539358627395",
-  #  "qr_code_as_base64":"iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAADmUlEQVR42u3dQY7CMBBFQd//0uEELJBMun93PWl2iIHYxcKK4/NI+tpxCSRAJEAkQCRAJEAkQCRAJEAkQCQBIgEiASIBIgEiASIBIgEiASIBIgkQCRAJEAkQaQuQc07E36+fP+X128YLEEAAAQQQQAABBBBAAAEEEEAAAeTuBS9burv0eaZOmKnjBQggxgsQQAABBBBAAAEEEEAAAQSQu18wZdn23xO46n3SxwsQQAABBBBAAAEEEEAAAQQQQAABBJA3Pw8ggAACCCCAAAIIIIAAAggggAACCCCAvD9A25aFAQEEEEAAAQQQQAABBBBAAAEEEEBmA0n/POkTw5ZbQAAxXoAAYrwAAcR4AQIIIIAAAgggjj/Ifb3jDwABBBBATHhAAAEEEEAAAQQQQACZDWRb6Yd4ChBABAggAgQQQAABBBBAAAFkJ5Buy33py6RVkP/9fTv+IAACCCCAAAIIIIAAAggggAACCCCbgNy6sFXvUwWwG5CNy8uAAAIIIIAAAggggAACCCCAAAIIIPkTcvJW04ofOkAAAQQQQAABBBBAAAEEEEAAAQSQWiBTlzG7TYyUYwvcrAgIIIAAAggggAACCCCAAAIIIIDsBNJt627Klt6U97fMCwgggAACCCCAAAIIIIAAAggggMzYcjsVsh+c5Yd4AgIIIIAAAggggAACCCCAAAIIIM2BpP/f9Jv0tt3kCQgggAACCCCAAAIIIIAAAggggAByd6C7TeyUQ0jTl8EBAQQQQAABBBBAAAEEEEAAAQQQQJ6Wz6LvtkW0G/z0Yxo8OA4QQAABBBBAAAEEEEAAAQQQQACZASQdbLfl1qnHTAACCCCAAAIIIIAAAggggAACCCCA9BzQbTcNpiyrenAcIIAAAggggAACCCCAAAIIIIAAMhvItmXbqgespUC2zAsIIIAAAggggAACCCCAAAIIIIBkAem25bPbxEjZctvxQXCAAAIIIIAAAggggAACCCCAAAIIIHOBpEyAlOuTBA0QQAABBBBAAAEEEEAAAQQQQAABJB9IOoSqCZ9ynQEBBBBAAAEEEEAAAQQQQAABBBBAsrbcpky8lJsDk25iBAQQQAABBBBAAAEEEEAAAQQQQADJOf4gZQKn3LTpZkVAAAEEEEAAAQQQQAABBBBAAAGkJxApNUAkQCRAJEAkQCRAJEAkQCRAJEAkASIBIgEiASIBIgEiASIBIgEiASIJEAkQCRAJEKlDH6PVj2ZD2ib1AAAAAElFTkSuQmCC",
-  #  "issued_at":1539358822,
-  #  "signature":"UtP00V9VCZQIU6igOA8pN7b6VXQQDIiHDoFzHxm3hho="}
 
 end
 
