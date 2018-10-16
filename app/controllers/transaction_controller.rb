@@ -7,11 +7,6 @@ class TransactionController < ApplicationController
   end
 
   def create
-    Transbank::Onepay::Base.shared_secret = "?XW#WOLG##FBAGEAYSNQ5APD#JF@$AYZ"
-    Transbank::Onepay::Base.api_key = "dKVhq1WGt_XapIYirTXNyUKoWTDFfxaEV63-O5jcsdw"
-
-   # ENV["ONEPAY_API_KEY"] = "mUc0GxYGor6X8u-_oB3e-HWJulRG01WoC96-_tUA3Bg"
-    Transbank::Onepay::Base.integration_type = 'TEST'
     sample_data = JSON.parse '{"items":[{"amount":36000,"quantity": 1,"description":"Fresh Strawberries"},{"amount":16000,"quantity":1,"description":"Lightweight Jacket"}]}'
     cart = Transbank::Onepay::ShoppingCart.new sample_data['items']
     @transaction_creation_response = Transbank::Onepay::Transaction.create(shopping_cart: cart).to_h
