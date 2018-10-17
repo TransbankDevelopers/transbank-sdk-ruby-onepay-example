@@ -27,7 +27,7 @@ En ambos casos el proyecto se ejecutará en http://localhost:3000 (y fallará en
 
 Es posible ver las operaciones del SDK implementadas en la clase [TransactionController](https://github.com/TransbankDevelopers/transbank-sdk-ruby-onepay-example/blob/master/app/controllers/transaction_controller.rb)
 
-Asimismo, es posible ver la utilización del SDK de JavaScript en el archivo [aquí](https://github.com/TransbankDevelopers/transbank-sdk-ruby-onepay-example/blob/master/public/js/use-onepay.js)
+Asimismo, es posible ver la utilización del SDK de JavaScript en este [archivo](https://github.com/TransbankDevelopers/transbank-sdk-ruby-onepay-example/blob/master/public/js/use-onepay.js)
 
 Este proyecto está hecho en Ruby 2.5.1 utilizando Rails 5.1.6
 
