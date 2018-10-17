@@ -57,10 +57,5 @@ class TransactionController < ApplicationController
   rescue Transbank::Onepay::Errors::RefundCreateError => e
     return render json: { message: e.message }
   end
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 end
 
