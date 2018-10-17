@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"><!--<![endif]-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+</head>
+<body>
+<table>
+  <tr>
+    <td>OCC:</td>
+    <td><%= @transaction_commit_response.occ %> </td>
+  </tr>
+  <tr>
+    <td>Número de carro:</td>
+    <td><%= @external_unique_number %>  </td>
+  </tr>
+  <tr>
+    <td>Código de autorización:</td>
+    <td> <%= @transaction_commit_response.authorization_code %> </td>
+  </tr>
+  <tr>
+    <td>Orden de compra:</td>
+    <td><%= @transaction_commit_response.buy_order %> </td>
+  </tr>
+  <tr>
+    <td>Descripción:</td>
+    <td> <%= @transaction_commit_response.description %> </td>
+  </tr>
+  <tr>
+    <td>Monto compra:</td>
+    <td><%= @transaction_commit_response.amount %> </td>
+  </tr>
+  <tr>
+    <td>Numero de cuotas:</td>
+    <td><%= @transaction_commit_response.installments_number %> </td>
+  </tr>
+  <tr>
+    <td>Monto cuota:</td>
+    <td><%= @transaction_commit_response.installments_amount %> </td>
+  </tr>
+  <tr>
+    <td>Fecha:</td>
+    <td> <%= @transaction_commit_response.issued_at %>  </td>
+  </tr>
+  <tr>
+    <td>Anulación</td>
+    <td>
+      <a href='/TODO'
+      >Anular esta compra</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

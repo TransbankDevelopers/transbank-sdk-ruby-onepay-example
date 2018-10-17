@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+git_source(:transbank_sdk_ruby){ |_repo_name| "https://github.com/TransbankDevelopers/transbank-sdk-ruby.git" }
+
+gem 'transbank-sdk', :transbank_sdk_ruby => '', :branch => 'fixes_from_example_project'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -39,6 +42,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'pry'
+  gem 'pry-byebug'
 end
 
 group :development do
