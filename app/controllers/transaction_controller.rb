@@ -11,11 +11,11 @@ class TransactionController < ApplicationController
     Transbank::Onepay::Base.api_key = "dKVhq1WGt_XapIYirTXNyUKoWTDFfxaEV63-O5jcsdw"
 
     Transbank::Onepay::Base.integration_type = 'TEST'
-    sample_data = {"items":[
-                            {"amount":36000,"quantity": 1,"description":"Fresh Strawberries"},
-                            {"amount":16000,"quantity":1,"description":"Lightweight Jacket"}
-                            ]}
-    cart = Transbank::Onepay::ShoppingCart.new sample_data['items']
+    sample_data = [
+                  {amount:36000,quantity: 1,description:"Fresh Strawberries"},
+                  {amount:16000,quantity:1,description:"Lightweight Jacket"}
+                  ]
+    cart = Transbank::Onepay::ShoppingCart.new sample_data
     @transaction_creation_response = Transbank::Onepay::Transaction.create(shopping_cart: cart).to_h
 
     render json: {
