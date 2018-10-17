@@ -40,11 +40,22 @@ class TransactionController < ApplicationController
       return render json: {message: 'Error while committing', occ: @occ, external_unique_number: @external_unique_number}, status: 403
     end
 
-    @transaction_commit_response = Transbank::Onepay::Transaction.commit(@occ, @external_unique_number)
+    @transaction_commit_response = Transbank::Onepay::Transaction.commit(occ: @occ, external_unique_number: @external_unique_number)
   end
 
   def refund
+    amount = params[:amount]
+    occ = params[:occ]
+    external_unique_number = params[:external_unique_number]
+    authorization_code = params[:authorization_code]
 
+    refund_params = { amount: amount,
+                      occ: occ,
+                      external_unique_number: external_unique_number,
+                      authorization_code: authorization_code }
+    @refund_response = Transbank::Onepay::Refund.create(refund_params)
+  rescue Transbank::Onepay::Errors::RefundCreateError => e
+    return render json: { message: e.message }
   end
 end
 
