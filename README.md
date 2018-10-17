@@ -25,9 +25,9 @@ También puedes iniciar el proyecto simplemente ejecutando el archivo `run.sh` e
 
 En ambos casos el proyecto se ejecutará en http://localhost:3000 (y fallará en caso de que el puerto 3000 no esté disponible)
 
-Es posible ver las operaciones del SDK implementadas en la clase [TransactionController](https://github.com/TransbankDevelopers/transbank-sdk-ruby-onepay-example/blob/master/app/controllers/transaction_controller.rb)
+Es posible ver las operaciones del SDK implementadas en la clase [TransactionController](./app/controllers/transaction_controller.rb)
 
-Asimismo, es posible ver la utilización del SDK de JavaScript en este [archivo](https://github.com/TransbankDevelopers/transbank-sdk-ruby-onepay-example/blob/master/public/js/use-onepay.js)
+Asimismo, es posible ver la utilización del SDK de JavaScript en este [archivo](./public/js/use-onepay.js)
 
 Este proyecto está hecho en Ruby 2.5.1 utilizando Rails 5.1.6
 
