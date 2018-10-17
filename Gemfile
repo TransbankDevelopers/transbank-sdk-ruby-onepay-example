@@ -6,11 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 git_source(:transbank_sdk_ruby){ |_repo_name| "https://github.com/TransbankDevelopers/transbank-sdk-ruby.git" }
-# gem 'rails', :stash => 'forks/rails'
-
-# git 'git@github.com:TransbankDevelopers/transbank-sdk-ruby.git' do
-#   gem 'transbank-sdk', branch: 'add_tests_and_refactors'
-# end
 
 gem 'transbank-sdk', :transbank_sdk_ruby => '', :branch => 'fixes_from_example_project'
 
