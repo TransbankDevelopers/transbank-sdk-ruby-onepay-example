@@ -3,7 +3,6 @@ class TransactionController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @base = Transbank::Onepay::Base::DEFAULT_CALLBACK
   end
 
   def create
