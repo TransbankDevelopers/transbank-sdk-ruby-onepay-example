@@ -3,14 +3,9 @@ class TransactionController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @base = Transbank::Onepay::Base::DEFAULT_CALLBACK
   end
 
   def create
-    Transbank::Onepay::Base.shared_secret = "?XW#WOLG##FBAGEAYSNQ5APD#JF@$AYZ"
-    Transbank::Onepay::Base.api_key = "dKVhq1WGt_XapIYirTXNyUKoWTDFfxaEV63-O5jcsdw"
-
-    Transbank::Onepay::Base.integration_type = 'TEST'
     sample_data = [
                   {amount:36000,quantity: 1,description:"Fresh Strawberries"},
                   {amount:16000,quantity:1,description:"Lightweight Jacket"}
@@ -57,5 +52,7 @@ class TransactionController < ApplicationController
   rescue Transbank::Onepay::Errors::RefundCreateError => e
     return render json: { message: e.message }
   end
+
+
 end
 
