@@ -10,11 +10,10 @@ function doQrDirecto() {
     showLoadingImage();
     $.ajax({
         type: "POST",
-        url: "/api/transaction",
+        url: '/transactions/create',
         async: true,
         success: function(data) {
-            // convert json to object
-            var transaction = JSON.parse(data);
+            var transaction = data;
             transaction["paymentStatusHandler"] = {
                 ottAssigned: function () {
                     // callback transacción asinada
@@ -29,7 +28,7 @@ function doQrDirecto() {
                         occ: occ,
                         externalUniqueNumber: externalUniqueNumber
                     };
-                    sendGetRedirect("/commit", params);
+                    sendGetRedirect('/transactions/commit', params);
                 },
                 canceled: function () {
                     // callback rejected by user
