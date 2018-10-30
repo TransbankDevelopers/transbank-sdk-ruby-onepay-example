@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/TransbankDevelopers/transbank-sdk-ruby.git
-  revision: ebbabbb13ad54be0956b18b6e13ff7609ca3c073
-  branch: fixes_from_example_project
-  specs:
-    transbank-sdk (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -167,6 +160,7 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    transbank-sdk (1.0.1)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -203,7 +197,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  transbank-sdk!
+  transbank-sdk
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
